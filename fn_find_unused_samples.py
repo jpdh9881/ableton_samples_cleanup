@@ -1,7 +1,13 @@
 import os
 
-# 		Function to compare two lists; if member of list1 is also a member of list2, add it to li_unused_samples
-def fn_compare_lists (list1, list2):
+# Compares two lists: if member of list1 is not a member of list2, add it to li_unused_samples
+#
+# @param list1
+# @param list2 List to be compared to
+#
+# @return List of list1 items which are not in list2
+#
+def fn_find_unused_samples (list1, list2):
 	li_unused_samples = [];
 
 	tkLB_samples_to_move.delete(0, END)
@@ -21,10 +27,4 @@ def fn_compare_lists (list1, list2):
 			li_unused_samples.append(list1[index])
 			#print (item)
 
-    # print li_unused_samples to left listbox
-	tkLB_samples_to_move.delete(0, END)
-	tkLB_unused_samples.delete(0, END)
-
-	li_unused_samples.sort()
-	for index, item in enumerate(li_unused_samples):
-		tkLB_unused_samples.insert(END, item)
+	return li_unused_samples.sort()
