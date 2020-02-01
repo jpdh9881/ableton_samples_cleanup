@@ -14,7 +14,7 @@ from fn_is_ableton_project import fn_is_ableton_project
 # @return li_music_folder_contents List of samples and their paths
 #
 def fn_search_for_all_samples (folder):
-	li_music_folder_contents
+	li_music_folder_contents = []
 	folder_contents_fn = os.listdir(folder)
 
 	for item in folder_contents_fn:

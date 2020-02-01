@@ -1,5 +1,6 @@
 import os
 from fn_is_ableton_project import fn_is_ableton_project
+from fn_scan_project import fn_scan_project
 
 # Searches a folder and all sub folders for Ableton projects. If an Ableton project is found,
 #	call fn_scan_project to build a list of samples within that project and add this list to

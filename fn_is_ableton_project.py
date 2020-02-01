@@ -13,6 +13,6 @@ def fn_is_ableton_project (folder):
 	for item in folder_contents:
 		item_full_path = os.path.join(folder, item)
 		if item_full_path.endswith(".als"):
-			is_project True
+			is_project = True
 	
 	return is_project
