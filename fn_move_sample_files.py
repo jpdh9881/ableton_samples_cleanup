@@ -2,6 +2,10 @@ import os
 
 
 # Moves files from one folder to another if the file is in a list
+#	This function changes _only_ the sample's root directory (represented by old_folder),
+#	meaning that the subdirectory structure will be retained
+#	e.g. 	Old location: /di/rectory/structure/old_folder/guitar/nylon/file.wav
+#			New location: /di/rectory/structure/new_folder/guitar/nylon/file.wav
 #
 # @param old_folder The folder from where files will be moved
 # @param new_folder The folder to where files will be moved
