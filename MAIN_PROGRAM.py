@@ -3,11 +3,15 @@ import os
 from tkinter import *
 from tkinter import ttk
 
-from fn_search_for_all_samples_cont import fn_search_for_all_samples_cont
-from fn_search_ableton_projects_cont import fn_search_ableton_projects_cont
-from fns_manipulate_items import fn_move_items_right
-from fns_manipulate_items import fn_remove_items_right
-from fn_move_sample_files import fn_move_sample_files
+from fn_search_for_all_samples_cont 	import fn_search_for_all_samples_cont
+from fn_search_ableton_projects_cont 	import fn_search_ableton_projects_cont
+from fns_manipulate_items 				import fn_move_items_right
+from fns_manipulate_items 				import fn_remove_items_right
+from fn_move_sample_files 				import fn_move_sample_files
+
+# Functions:
+# 	fn_is_ableton_project (CLEANED)
+#	fn_scan_project	(CLEANED)
 
 # *** Configure GUI
 root = Tk()

@@ -1,6 +1,10 @@
 import os
 
-# DESCRIPTION
+# Verifies whether a folder is an Ableton Project folder
+#
+# @param folder	The folder that is being tested
+# @return Whether the folder is an Ableton project or not (True if yes, False if no)
+#
 def fn_is_ableton_project (folder):
 	folder_contents = os.listdir(folder)
 

@@ -1,7 +1,7 @@
 import os
 from fn_is_ableton_project import fn_is_ableton_project
 
-#	Scan folder and subfolders for Ableton Projects; do things to those projects
+# Scan folder and subfolders for Ableton Projects; do things to those projects
 def fn_search_ableton_projects (folder, li_samples_used):
 	folder_contents = os.listdir(folder)
 
@@ -10,7 +10,7 @@ def fn_search_ableton_projects (folder, li_samples_used):
 
 		if os.path.isdir(item_full_path):
 			if fn_is_ableton_project (item_full_path):
-				fn_scan_project (item_full_path, li_samples_used)
+				li_samples_used.extend(fn_scan_project (item_full_path))
 			else:
 				fn_search_ableton_projects(item_full_path, li_samples_used)
 	return li_samples_used
