@@ -1,22 +1,51 @@
-# Python modules
+# ------------------------------
+# PYTHON MODULES being used
 import os
 from tkinter import *
-from tkinter import ttk
+# from tkinter import ttk
 
+# ------------------------------
+# METHODS: for searching folders and building lists
 from fn_search_for_all_samples 			import fn_search_for_all_samples
 from fn_search_ableton_projects			import fn_search_ableton_projects
-from fns_manipulate_items 				import fn_move_items_right
-from fns_manipulate_items 				import fn_remove_items_right
 from fn_move_sample_files 				import fn_move_sample_files
 
-# Functions:
-# 	fn_is_ableton_project (CLEANED)
-#	fn_scan_project	(CLEANED)
-#	fn_move_sample_files (CLEANED)
-#	fn_compare_lists
-#	fn_search_ableton_projects (CLEANED)
-#	fn_search_for_all_samples (CLEANED)
-#	fns_manipulate_items
+# ------------------------------
+# METHODS: for doing things with the tkinter objects
+#	- move an item from the left listbox to the right listbox
+def fn_move_items_right ():
+	li_samples_on_right = list(tkLB_samples_to_move.get(0, END))
+	li_samples_on_left = list(tkLB_unused_samples.get(0, END))
+	li_samples_to_move = [tkLB_unused_samples.get(item) for item in tkLB_unused_samples.curselection()]
+	for item in li_samples_to_move:
+		if item not in li_samples_on_right:
+			# colour item in left listbox
+			item_index = li_samples_on_left.index(item)
+			tkLB_unused_samples.itemconfig(item_index, bg="gray")
+			# add item to right array
+			li_samples_on_right.append(item)
+
+	# populate the right listbox with modified right array
+	for item in li_samples_on_right:
+		tkLB_samples_to_move.insert(END, item)
+
+#	- remove an item from the right listbox
+def fn_remove_items_right ():
+	li_samples_on_left = list(tkLB_unused_samples.get(0, END))
+	li_samples_on_right = list(tkLB_samples_to_move.get(0, END))
+	li_items_to_remove = [tkLB_samples_to_move.get(item) for item in tkLB_samples_to_move.curselection()]
+
+	for item in li_items_to_remove:
+		# remove colouring from item in left listbox
+		item_index = li_samples_on_left.index(item)
+		tkLB_unused_samples.itemconfig(item_index, bg="white")
+		# remove item from right array
+		li_samples_on_right.remove(item)
+
+	# populate the right listbox with modified right array
+	for item in li_samples_on_right:
+		tkLB_samples_to_move.insert(END, item)
+	li_samples_to_move = []
 
 # ------------------------------
 # CONFIGURE GUI
@@ -24,15 +53,16 @@ root = Tk()
 root.title("Sample Search and Move")
 #	- set window attributes
 root.resizable(False, False)
-window_width = 1000;
-window_height = 700;
+window_width = 1000
+window_height = 700
+bg_color = "#F3E5AB"
 root.geometry(str(window_width) + "x" + str(window_height))
-root.configure(background="#F3E5AB")
+root.configure(background=bg_color)
 
 # ------------------------------
 # DRAW GUI
 #	- separator line
-canvas = Canvas(root, width=window_width, height=window_height, background="#F3E5AB")
+canvas = Canvas(root, width=window_width, height=window_height, background=bg_color)
 canvas.create_line(5, 70, window_width-5, 70, width=2)
 canvas.place(x = 0, y = 0)
 
