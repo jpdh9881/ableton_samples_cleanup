@@ -7,6 +7,7 @@ import os
 # @param new_folder The folder to where files will be moved
 # @param li_samples_to_move List of files to be moved from old folder to new folder
 #
+# @return NONE
 def fn_move_sample_files (old_folder, new_folder, li_samples_to_move):
 	old_folder = tkEN_samples_folder.get()
 	new_folder = tkEN_new_folder.get()
