@@ -9,11 +9,12 @@ from tkinter import *
 from fn_search_for_all_samples 			import fn_search_for_all_samples
 from fn_search_ableton_projects			import fn_search_ableton_projects
 from fn_move_sample_files 				import fn_move_sample_files
+from fn_find_unused_samples				import fn_find_unused_samples
 
 # ------------------------------
 # METHODS: for doing things with the tkinter objects
 #	- move an item from the left listbox to the right listbox
-def fn_move_items_right ():
+def tk_move_items_right ():
 	li_samples_on_right = list(tkLB_samples_to_move.get(0, END))
 	li_samples_on_left = list(tkLB_unused_samples.get(0, END))
 	li_samples_to_move = [tkLB_unused_samples.get(item) for item in tkLB_unused_samples.curselection()]
@@ -30,7 +31,7 @@ def fn_move_items_right ():
 		tkLB_samples_to_move.insert(END, item)
 
 #	- remove an item from the right listbox
-def fn_remove_items_right ():
+def tk_remove_items_right ():
 	li_samples_on_left = list(tkLB_unused_samples.get(0, END))
 	li_samples_on_right = list(tkLB_samples_to_move.get(0, END))
 	li_items_to_remove = [tkLB_samples_to_move.get(item) for item in tkLB_samples_to_move.curselection()]
@@ -46,6 +47,15 @@ def fn_remove_items_right ():
 	for item in li_samples_on_right:
 		tkLB_samples_to_move.insert(END, item)
 	li_samples_to_move = []
+
+#
+def tk_add_unused_samples (li_unused_samples):
+	    # print li_unused_samples to left listbox
+	tkLB_samples_to_move.delete(0, END)
+	tkLB_unused_samples.delete(0, END)
+
+	for index, item in enumerate(li_unused_samples):
+		tkLB_unused_samples.insert(END, item)
 
 # ------------------------------
 # CONFIGURE GUI
@@ -83,9 +93,10 @@ tkEN_projects_folder.insert(0, "/Users/josephhaley/Music/*projects folder*/")
 #	- create Button: search for unused samples
 tkBU_samples_folder = Button(root,	text="Search for unused samples", \
 									height=3, \
-									command=fn_compare_lists(	fn_search_for_all_samples_(tkEN_samples_folder.get()), \
-																fn_search_ableton_projects(tkEN_projects_folder.get()) \
-															))
+									command=tk_add_unused_samples( \
+												fn_find_unused_samples( fn_search_for_all_samples_(tkEN_samples_folder.get()), \
+																		fn_search_ableton_projects(tkEN_projects_folder.get()) \
+															)))
 tkBU_samples_folder.place(x = window_width-142, y = 7)
 
 #	- create Listbox: list of unused samples
@@ -101,11 +112,11 @@ tkLB_samples_to_move = Listbox(root, width=40, selectmode=EXTENDED, borderwidth=
 tkLB_samples_to_move.place(x = 592, y = 104, width = 400, height = 560) #DRAW
 
 #	- create Button: move item from left to right
-tkBU_samples_folder = Button(root, text="Move to > > >", command=fn_move_items_right)
+tkBU_samples_folder = Button(root, text="Move to > > >", command=tk_move_items_right)
 tkBU_samples_folder.place(x = 450, y = 280)
 
 #	- create Button: remove item from right and dehighlight item in left
-tkBU_samples_folder = Button(root, text="< < < Move to", command=fn_remove_items_right)
+tkBU_samples_folder = Button(root, text="< < < Move to", command=tk_remove_items_right)
 tkBU_samples_folder.place(x = 450, y = 315)
 
 #	- create Entry: for user to input new samples folder
@@ -118,7 +129,7 @@ tkEN_new_folder.insert(0, "/Users/josephhaley/Music/*new samples folder*")
 #	- create Button: move samples to new folder
 tkBU_move_samples = Button (root, \
 	text="Move samples", \
-	command=fn_move_sample_files(	tkEN_samples_folder.get(), \
+	command=tk_move_sample_files(	tkEN_samples_folder.get(), \
 									tkEN_new_folder.get(), \
 									list(tkLB_samples_to_move.get(0, END)) \
 								))
