@@ -1,6 +1,6 @@
 import os
 
-# Scans an Ableton project folder and builds a list of all samples saved in the folder
+# Scans an Ableton Project folder and builds a list of all samples saved in the folder
 #
 # @param project_path The path of the Ableton Project folder
 #
