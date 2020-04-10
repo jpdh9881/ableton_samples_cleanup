@@ -1,5 +1,3 @@
-(I'm a little new to this. Please send me some tips, etc. if you have any)
-
 # Ableton Samples Cleanup
 
 Python program that moves/copies samples to another folder if they haven't been used in any Ableton projects
