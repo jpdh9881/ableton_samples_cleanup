@@ -1,12 +1,10 @@
-(I'm a little new to this. Please send me some tips, etc. if you have any)
-
 # Ableton Samples Cleanup
 
 Python program that moves/copies samples to another folder if they haven't been used in any Ableton projects
 
 ## Getting Started
 
-Just download files and run the MAIN_PROGRAM.py file in python3
+Download files and run the MAIN_PROGRAM.py file in python3
 
 ### Prerequisites
 
@@ -18,7 +16,6 @@ Just download the files
 
 ## Running the tests
 
-There are no tests
 
 ## Built With
 
@@ -26,11 +23,9 @@ There are no tests
 
 ## Contributing
 
-I have no idea how you'd do this.
 
 ## Versioning
 
-I have no idea what this means.
 
 ## Authors
 
