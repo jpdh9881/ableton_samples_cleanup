@@ -1,6 +1,8 @@
 # Ableton Samples Cleanup
 
-Python program that moves/copies samples to another folder if they haven't been used in any Ableton projects
+Python program that moves/copies samples to another folder if they haven't been used in any Ableton projects.
+
+![screenshot](https://github.com/jpdh88/ableton_samples_cleanup/blob/master/ableton_sample_clearnup_screenshot.png)
 
 ## Getting Started
 
